@@ -39,8 +39,8 @@ function EndCallButton(){
         }
     }
   return <Button  variant={"destructive"} onClick={endCall} >
-
-  </Button>
+           End Meeting
+        </Button>
 }
 
 export default EndCallButton

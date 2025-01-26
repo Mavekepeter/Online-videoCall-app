@@ -1,11 +1,18 @@
-import React from 'react'
+"use client";
 
-const SchedulePage = () => {
-  return (
-    <div>
-      schedule
-    </div>
-  )
+import LoaderUI from "@/components/LoaderUI";
+import { useUserRole } from "@/hooks/useuserRole"
+import { useRouter } from "next/navigation";
+import InterviewScheduleUI from "./InterviewScheduleUI";
+
+function SchedulePage() {
+  const router = useRouter();
+
+  const { isInterviewer, isLoading } = useUserRole();
+
+  if (isLoading) return <LoaderUI />;
+  if (!isInterviewer) return router.push("/");
+
+  return <InterviewScheduleUI />;
 }
-
-export default SchedulePage
+export default SchedulePage;
