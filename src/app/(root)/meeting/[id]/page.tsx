@@ -12,7 +12,9 @@ import { useState } from "react";
 function MeetingPage() {
   const { id } = useParams();
   const { isLoaded } = useUser();
-  const { call, isCallLoading } = useGetCallById(id);
+
+  // Ensure id is a string before calling useGetCallById
+  const { call, isCallLoading } = useGetCallById(id as string);
 
   const [isSetupComplete, setIsSetupComplete] = useState(false);
 
@@ -38,4 +40,5 @@ function MeetingPage() {
     </StreamCall>
   );
 }
+
 export default MeetingPage;
